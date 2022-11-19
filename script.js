@@ -1,3 +1,8 @@
+const questions = [
+    
+]
+
+
 // on page load, only begin quiz container is shown
 
 // When user clicks on the 'start quiz' button
