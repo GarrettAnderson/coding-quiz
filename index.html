@@ -12,16 +12,59 @@
 
     <body>
         <header>
-            <section class="view-high-scores">
-                <a href="#"><p>View High Scores</p></a>
-            </section>
+            <p class="view-high-scores">View High Scores</p></a>
             <p>Time: <span class="time-remaining">75</span></p>
         </header>
 
         <main>
 
-            <section>
-                <h1></h1>
+            <!-- Section that renders when starting the quiz -->
+            <section class="begin-quiz-container">
+                <h1>Coding Quiz Challenge</h1>
+                <p>Try to answer the following code related questions within the time alotted. Keep in mind that an incorrect answer will result in 10 seconds being deducted from the timer.</p>
+                <button>Start Quiz</button>
+            </section>
+
+            <!-- Section that renders the quiz questions in succession -->
+            <section class="question-container">
+                <h2 class="question">This is a placeholder question</h2>
+                <ol class="question-answer-options">
+                    <li>choice1</li>
+                    <li>choice2</li>
+                    <li>choice3</li>
+                    <li>choice4</li>
+                </ol>
+                <section class="answer-result">
+                    <p class="answer-result-text">Wrong!</p>
+                </section>
+            </section>
+
+            <!-- Section that renders the final score -->
+            <section class="final-score-container">
+                <h2>All Done!</h2>
+                <h3>Your final score is: <span class="final-score">22</span></h3>
+                <form>
+                    <label for="final-score-input">Enter Initials:</label>
+                    <input id="final-score-input" class="record-final-score" />
+                    <button>Submit</button>
+                </form>
+            </section>
+
+            <!-- Section that renders to display high scores -->
+            <section id="high-scores" class="scores-container">
+                <h2>High Scores</h2>
+                <section class="high-scores-list">
+                    <ol>
+                        <li>
+                            <p class="initials">AB</p>
+                            <p class="score-value">22</p>
+                        </li>
+                    </ol>
+                </section>
+                <section class="quiz-navigation-buttons">
+                    <button>Go Back</button>
+                    <button>Clear High Scores</button>
+                </section>
             </section>
 
         
