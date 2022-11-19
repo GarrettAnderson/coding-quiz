@@ -19,13 +19,13 @@
         <main>
             <!-- Section that renders when starting the quiz -->
             <section class="begin-quiz-container">
-                <h1>Coding Quiz Challenge</h1>
+                <h2>Coding Quiz Challenge</h2>
                 <p>Try to answer the following code related questions within the time alotted. Keep in mind that an incorrect answer will result in 10 seconds being deducted from the timer.</p>
                 <button>Start Quiz</button>
             </section>
 
             <!-- Section that renders the quiz questions in succession -->
-            <section class="question-container">
+            <section class="question-container hide">
                 <h2 class="question">This is a placeholder question</h2>
                 <ol class="question-answer-options">
                     <li>choice1</li>
@@ -39,7 +39,7 @@
             </section>
 
             <!-- Section that renders the final score -->
-            <section class="final-score-container">
+            <section class="final-score-container hide">
                 <h2>All Done!</h2>
                 <h3>Your final score is: <span class="final-score">22</span></h3>
                 <form>
@@ -50,7 +50,7 @@
             </section>
 
             <!-- Section that renders to display high scores -->
-            <section id="high-scores" class="scores-container">
+            <section id="high-scores" class="scores-container hide">
                 <h2>High Scores</h2>
                 <section class="high-scores-list">
                     <ol>
