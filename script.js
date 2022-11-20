@@ -52,18 +52,16 @@ function startTimer() {
 function getNextQuestion() {
     
     for (let i = questionsIndex; i < questions.length; i++) {
-        questionsIndex = i
         questionContainer.innerHTML = `
              <h2 class="question">${questions[questionsIndex].question}</h2>
                  <ol class="question-answer-options">
                      <li class="question-answer-choice">${questions[questionsIndex].options[0]}</li>
                      <li class="question-answer-choice">${questions[questionsIndex].options[1]}</li>
-                    <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
+                     <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
                      <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
                  </ol>
-             `
+            `
     }
-
 
 }
 
@@ -81,6 +79,7 @@ function chooseAsAnswer(answerChoice, index) {
         console.log('answer is incorrect')
         answerResult.innerHTML = 'WRONG'
     }
+    questionsIndex += 1
 }
 
 function startQuiz() {
