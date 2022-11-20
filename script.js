@@ -8,7 +8,8 @@ const questions = [
             "booleans",
             "alerts",
             "numbers"
-        ]
+        ],
+        point: 2
     },
     {
         number: 2,
@@ -19,7 +20,8 @@ const questions = [
             "curly brackets",
             "parenthesis",
             "square brackets"
-        ]
+        ],
+        point: 2
     },
     {
         number: 3,
@@ -30,13 +32,17 @@ const questions = [
             "strings",
             "booleans",
             "all of the above"
-        ]
+        ],
+        point: 2
     }
 ]
  
 const beginQuizContainer = document.querySelector(".begin-quiz-container")
 const startQuizBtn = document.querySelector(".startQuizBtn")
-const questionContainer = document.querySelector(".question-container")
+const questionsContainer = document.querySelector(".questions-container")
+const questionContainer = document.querySelector(".single-question-container")
+const answerResult = document.querySelector(".answer-result-text")
+
 let questionsIndex
 
 function startTimer() {
@@ -48,12 +54,17 @@ function chooseAsAnswer(answerChoice, index) {
     //the choice is evaluated to be correct or incorrect
 
     const userAnswerChoice = answerChoice.target
-    
-    if (userAnswerChoice === questions[index].answer) {
-        console.log('answer is correct')
+    console.log(userAnswerChoice)
+    console.log(questions[questionsIndex].answer)
+    if (userAnswerChoice.innerHTML === questions[questionsIndex].answer) {
+        console.log(answerResult)
+        answerResult.innerHTML = 'CORRECT'
     } else {
         console.log('answer is incorrect')
+        answerResult.innerHTML = 'WRONG'
     }
+
+    
 
 }
 
@@ -62,7 +73,7 @@ function startQuiz() {
     // the begin quiz container is hidden.
     beginQuizContainer.classList.add("hide")
     // the question container section is shown to user
-    questionContainer.classList.remove("hide")
+    questionsContainer.classList.remove("hide")
 
     // the timer is started
     startTimer()
@@ -87,11 +98,7 @@ function startQuiz() {
     console.log(questionChoices)
     
     questionChoices.forEach((questionChoice, index) => {
-        questionChoice.addEventListener('click', () => {
-            console.log(questions[questionsIndex].answer)
-
-
-        })
+        questionChoice.addEventListener('click', chooseAsAnswer)
     })
     
     // the user moves on to the next question in the sequence
