@@ -42,8 +42,7 @@ const startQuizBtn = document.querySelector(".startQuizBtn")
 const questionsContainer = document.querySelector(".questions-container")
 const questionContainer = document.querySelector(".single-question-container")
 const answerResult = document.querySelector(".answer-result-text")
-
-let questionsIndex
+let questionsIndex = 0
 
 function startTimer() {
     console.log('start timer')
@@ -64,7 +63,8 @@ function chooseAsAnswer(answerChoice, index) {
         answerResult.innerHTML = 'WRONG'
     }
 
-    
+
+
 
 }
 
@@ -80,18 +80,31 @@ function startQuiz() {
     
     // one question is shown to the user at a time
 
-    questions.forEach((question, index) => {
-        questionsIndex = index
+    // questions.forEach((question, index) => {
+    //     questionsIndex = index
+    //     questionContainer.innerHTML = `
+        // <h2 class="question">${question.question}</h2>
+        //     <ol class="question-answer-options">
+        //         <li class="question-answer-choice">${question.options[0]}</li>
+        //         <li class="question-answer-choice">${question.options[1]}</li>
+        //         <li class="question-answer-choice">${question.options[2]}</li>
+        //         <li class="question-answer-choice">${question.options[3]}</li>
+        //     </ol>
+        // `
+    // })
+
+    for (let i = 0; i < questions.length; i++) {
+        questionsIndex = i
         questionContainer.innerHTML = `
-        <h2 class="question">${question.question}</h2>
-            <ol class="question-answer-options">
-                <li class="question-answer-choice">${question.options[0]}</li>
-                <li class="question-answer-choice">${question.options[1]}</li>
-                <li class="question-answer-choice">${question.options[2]}</li>
-                <li class="question-answer-choice">${question.options[3]}</li>
-            </ol>
-        `
-    })
+             <h2 class="question">${questions[i].question}</h2>
+                 <ol class="question-answer-options">
+                     <li class="question-answer-choice">${questions[i].options[0]}</li>
+                     <li class="question-answer-choice">${questions[i].options[1]}</li>
+                    <li class="question-answer-choice">${questions[i].options[2]}</li>
+                     <li class="question-answer-choice">${questions[i].options[3]}</li>
+                 </ol>
+             `
+    }
     
     // when user clicks on an answer choice, 
     const questionChoices = document.querySelectorAll(".question-answer-choice")
