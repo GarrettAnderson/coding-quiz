@@ -50,8 +50,10 @@ function startTimer() {
 }
 
 function getNextQuestion() {
-    
-    for (let i = questionsIndex; i < questions.length; i++) {
+    // console.log(questionsIndex)
+    // for (let i = questionsIndex; i < questions.length; i++) {
+       
+        console.log(questions[questionsIndex])
         questionContainer.innerHTML = `
              <h2 class="question">${questions[questionsIndex].question}</h2>
                  <ol class="question-answer-options">
@@ -61,8 +63,8 @@ function getNextQuestion() {
                      <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
                  </ol>
             `
-    }
-
+    // }
+     answerResult.innerHTML = ""
 }
 
 function chooseAsAnswer(answerChoice, index) {
@@ -79,7 +81,8 @@ function chooseAsAnswer(answerChoice, index) {
         console.log('answer is incorrect')
         answerResult.innerHTML = 'WRONG'
     }
-    questionsIndex += 1
+    questionsIndex++
+    getNextQuestion()
 }
 
 function startQuiz() {
