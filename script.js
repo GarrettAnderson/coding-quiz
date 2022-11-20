@@ -44,8 +44,27 @@ const questionContainer = document.querySelector(".single-question-container")
 const answerResult = document.querySelector(".answer-result-text")
 let questionsIndex = 0
 
+
 function startTimer() {
     console.log('start timer')
+}
+
+function getNextQuestion() {
+    
+    for (let i = questionsIndex; i < questions.length; i++) {
+        questionsIndex = i
+        questionContainer.innerHTML = `
+             <h2 class="question">${questions[questionsIndex].question}</h2>
+                 <ol class="question-answer-options">
+                     <li class="question-answer-choice">${questions[questionsIndex].options[0]}</li>
+                     <li class="question-answer-choice">${questions[questionsIndex].options[1]}</li>
+                    <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
+                     <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
+                 </ol>
+             `
+    }
+
+
 }
 
 function chooseAsAnswer(answerChoice, index) {
@@ -62,10 +81,6 @@ function chooseAsAnswer(answerChoice, index) {
         console.log('answer is incorrect')
         answerResult.innerHTML = 'WRONG'
     }
-
-
-
-
 }
 
 function startQuiz() {
@@ -93,18 +108,7 @@ function startQuiz() {
         // `
     // })
 
-    for (let i = 0; i < questions.length; i++) {
-        questionsIndex = i
-        questionContainer.innerHTML = `
-             <h2 class="question">${questions[i].question}</h2>
-                 <ol class="question-answer-options">
-                     <li class="question-answer-choice">${questions[i].options[0]}</li>
-                     <li class="question-answer-choice">${questions[i].options[1]}</li>
-                    <li class="question-answer-choice">${questions[i].options[2]}</li>
-                     <li class="question-answer-choice">${questions[i].options[3]}</li>
-                 </ol>
-             `
-    }
+    getNextQuestion()
     
     // when user clicks on an answer choice, 
     const questionChoices = document.querySelectorAll(".question-answer-choice")
