@@ -42,6 +42,9 @@ const startQuizBtn = document.querySelector(".startQuizBtn")
 const questionsContainer = document.querySelector(".questions-container")
 const questionContainer = document.querySelector(".single-question-container")
 const answerResult = document.querySelector(".answer-result-text")
+const questionHeading = document.querySelector(".question")
+
+let timeLeft = 15
 let questionsIndex = 0
 
 
@@ -51,8 +54,7 @@ function startTimer() {
 
 function getNextQuestion() {
     // console.log(questionsIndex)
-    // for (let i = questionsIndex; i < questions.length; i++) {
-       
+    // for (let i = 0; i < questions.length; i++) {
         console.log(questions[questionsIndex])
         questionContainer.innerHTML = `
              <h2 class="question">${questions[questionsIndex].question}</h2>
@@ -64,13 +66,19 @@ function getNextQuestion() {
                  </ol>
             `
     // }
-     answerResult.innerHTML = ""
+    const questionChoices = document.querySelectorAll(".question-answer-choice")
+    console.log(questionChoices)
+    
+    
+    questionChoices.forEach((questionChoice, index) => {
+        questionChoice.addEventListener('click', chooseAsAnswer)
+    })
+
 }
 
-function chooseAsAnswer(answerChoice, index) {
+function chooseAsAnswer(answerChoice) {
     console.log(answerChoice.target)
     //the choice is evaluated to be correct or incorrect
-
     const userAnswerChoice = answerChoice.target
     console.log(userAnswerChoice)
     console.log(questions[questionsIndex].answer)
@@ -81,8 +89,15 @@ function chooseAsAnswer(answerChoice, index) {
         console.log('answer is incorrect')
         answerResult.innerHTML = 'WRONG'
     }
-    questionsIndex++
-    getNextQuestion()
+
+    if (questionsIndex < questions.length) {
+        questionsIndex++
+        getNextQuestion() 
+    } else {
+        questionsIndex = 0
+
+    }
+    // console.log(questions[questionsIndex])
 }
 
 function startQuiz() {
@@ -113,14 +128,10 @@ function startQuiz() {
     getNextQuestion()
     
     // when user clicks on an answer choice, 
-    const questionChoices = document.querySelectorAll(".question-answer-choice")
-    console.log(questionChoices)
-    
-    questionChoices.forEach((questionChoice, index) => {
-        questionChoice.addEventListener('click', chooseAsAnswer)
-    })
+
     
     // the user moves on to the next question in the sequence
+
 
 }
 
