@@ -43,7 +43,7 @@ const questionsContainer = document.querySelector(".questions-container")
 const questionContainer = document.querySelector(".single-question-container")
 const answerResult = document.querySelector(".answer-result-text")
 const questionHeading = document.querySelector(".question")
-
+const finalScoreContainer = document.querySelector(".final-score-container")
 let timeLeft = 15
 let questionsIndex = 0
 
@@ -54,25 +54,35 @@ function startTimer() {
 
 function getNextQuestion() {
     // console.log(questionsIndex)
-    // for (let i = 0; i < questions.length; i++) {
-        console.log(questions[questionsIndex])
-        questionContainer.innerHTML = `
-             <h2 class="question">${questions[questionsIndex].question}</h2>
-                 <ol class="question-answer-options">
-                     <li class="question-answer-choice">${questions[questionsIndex].options[0]}</li>
-                     <li class="question-answer-choice">${questions[questionsIndex].options[1]}</li>
-                     <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
-                     <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
-                 </ol>
-            `
-    // }
-    const questionChoices = document.querySelectorAll(".question-answer-choice")
-    console.log(questionChoices)
+    console.log(questions[questionsIndex])
+    if(questionsIndex < questions.length) {
+    questionContainer.innerHTML = `
+            <h2 class="question">${questions[questionsIndex].question}</h2>
+                <ol class="question-answer-options">
+                    <li class="question-answer-choice">${questions[questionsIndex].options[0]}</li>
+                    <li class="question-answer-choice">${questions[questionsIndex].options[1]}</li>
+                    <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
+                    <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
+                </ol>
+        `
+
+        const questionChoices = document.querySelectorAll(".question-answer-choice")
+        console.log(questionChoices)
+        
+        questionChoices.forEach((questionChoice, index) => {
+           questionChoice.addEventListener('click', chooseAsAnswer)
+       })
+    } else {
+        console.log('end of quiz')
+        //hide quiz portion
+        questionsContainer.classList.add('hide')
+        // show initials input form
+        finalScoreContainer.classList.remove('hide')
+    }
     
-    
-    questionChoices.forEach((questionChoice, index) => {
-        questionChoice.addEventListener('click', chooseAsAnswer)
-    })
+     // when user clicks on an answer choice, 
+     // the user moves on to the next question in the sequence     
+
 
 }
 
@@ -81,7 +91,7 @@ function chooseAsAnswer(answerChoice) {
     //the choice is evaluated to be correct or incorrect
     const userAnswerChoice = answerChoice.target
     console.log(userAnswerChoice)
-    console.log(questions[questionsIndex].answer)
+    // console.log(questions[questionsIndex].answer)
     if (userAnswerChoice.innerHTML === questions[questionsIndex].answer) {
         console.log(answerResult)
         answerResult.innerHTML = 'CORRECT'
@@ -90,13 +100,12 @@ function chooseAsAnswer(answerChoice) {
         answerResult.innerHTML = 'WRONG'
     }
 
-    if (questionsIndex < questions.length) {
+    // if (questionsIndex < questions.length) {
         questionsIndex++
         getNextQuestion() 
-    } else {
-        questionsIndex = 0
-
-    }
+    // } else {
+        // questionsIndex = 0
+    // }
     // console.log(questions[questionsIndex])
 }
 
@@ -127,11 +136,7 @@ function startQuiz() {
 
     getNextQuestion()
     
-    // when user clicks on an answer choice, 
-
-    
-    // the user moves on to the next question in the sequence
-
+   
 
 }
 
