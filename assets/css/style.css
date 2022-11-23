@@ -14,7 +14,28 @@ header {
     color: #E866EC;
 }
 
+.begin-quiz-container, 
+.single-question-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
 
+.start-quiz-btn {
+    background-color:#351E75;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+}
+
+/* quiz play styles */
+
+.question-answer-choice {
+    background-color:#351E75;
+    color: #fff;
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+}
 
 /* Hide containers */
 

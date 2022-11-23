@@ -216,7 +216,7 @@ function startQuiz() {
     // the question container section is shown to user
     questionsContainer.classList.remove("hide")
     // the timer is started
-    startTimer()
+    // startTimer()
     // one question is shown to the user at a time
     getNextQuestion()
 }
