@@ -58,6 +58,7 @@ let timeLeft = 20;
 let questionsIndex = 0;
 let score = 0;
 let initials = ""
+let userAnswerChoice
 
 function startTimer() {
     console.log('start timer')
@@ -154,6 +155,7 @@ function trackScore(event) {
     goBackBtn.addEventListener("click", function() {
         highScoresContainer.classList.add("hide")
         beginQuizContainer.classList.remove("hide")
+        answerResult.innerHTML = ""
     })
 
 }
@@ -161,7 +163,7 @@ function trackScore(event) {
 function chooseAsAnswer(event) {
     console.log(event.target)
     //the choice is evaluated to be correct or incorrect
-    const userAnswerChoice = event.target
+    userAnswerChoice = event.target
     console.log(userAnswerChoice)
     // console.log(questions[questionsIndex].answer)
     if (userAnswerChoice.innerHTML === questions[questionsIndex].answer) {
@@ -194,6 +196,8 @@ function startQuiz() {
     // initialize questionIndex to zero so able to restart the quiz
     questionsIndex = 0
 
+    // reset score to 0
+    score = 0
     // reset timer countdown starting point
     timeLeft = 20
     timerEl.innerHTML = timeLeft
