@@ -159,6 +159,10 @@ function trackScore(event) {
         answerResult.innerHTML = ""
     })
 
+    // when clear high scores button is clicked, remove the li elements that display the high scores from the dom
+    clearScoresBtn.addEventListener("click", function() {
+        highScoresList.innerHTML = ""
+    })
 }
 
 function chooseAsAnswer(event) {
@@ -185,7 +189,6 @@ function chooseAsAnswer(event) {
         console.log(timeLeft)
         timerEl.innerHTML = timeLeft
     }
-
         questionsIndex++
         getNextQuestion() 
 
