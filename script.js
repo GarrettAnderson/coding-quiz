@@ -119,6 +119,9 @@ function getNextQuestion() {
         // show final score to user
         finalScoreDisplay.innerHTML = score
         
+        // clear initials when retaking that quiz
+        initialsValueDisplay.value = ""
+
         // when user inputs their initials and clicks submit button,
         submitScoresBtn.addEventListener("click", trackScore) 
     }
@@ -129,7 +132,7 @@ function trackScore(event) {
 // their initials and score is added to high scores
     // initials and score is saved to local storage
     event.preventDefault()
-    initials = document.querySelector(".record-final-score").value
+    initials = initialsValueDisplay.value
     console.log(initials + ": " + score)
 
     // when user clicks submit button,
@@ -191,7 +194,6 @@ function chooseAsAnswer(event) {
     }
         questionsIndex++
         getNextQuestion() 
-
 }
 
 function startQuiz() {
