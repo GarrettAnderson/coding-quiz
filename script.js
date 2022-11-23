@@ -132,14 +132,15 @@ function trackScore(event) {
 // their initials and score is added to high scores
     // initials and score is saved to local storage
     event.preventDefault()
+    finalScoreContainer.classList.add('hide')
+    highScoresContainer.classList.remove('hide')
+    
     initials = initialsValueDisplay.value
     console.log(initials + ": " + score)
 
     // when user clicks submit button,
         // the final scores div is hidden 
         // and the high scores div is shown displaying high schores
-    finalScoreContainer.classList.add('hide')
-    highScoresContainer.classList.remove('hide')
 
     // save initials in local storage
     // save score in local storage
