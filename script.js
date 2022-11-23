@@ -47,14 +47,16 @@ const finalScoreContainer = document.querySelector(".final-score-container")
 const finalScoreDisplay = document.querySelector(".final-score")
 const submitScoresBtn = document.querySelector(".submit-scores-btn")
 const timerEl = document.querySelector(".time-remaining")
-let timeLeft = 15;
+const highScoresContainer = document.querySelector(".scores-container")
+let timeInterval
+let timeLeft = 20;
 let questionsIndex = 0;
 let score = 0;
 let initials = ""
 
 function startTimer() {
     console.log('start timer')
-    var timeInterval = setInterval(function () {
+    timeInterval = setInterval(function () {
         timeLeft--;
         timerEl.textContent = timeLeft
     
@@ -101,6 +103,9 @@ function getNextQuestion() {
        })
     } else {
         console.log('end of quiz')
+        // set timer countdown to zero
+        clearInterval(timeInterval)
+        timerEl.innerHTML = 0
         //hide quiz portion
         questionsContainer.classList.add('hide')
         // show initials input form
@@ -125,6 +130,8 @@ function trackScore(event) {
     // when user clicks submit button,
         // the final scores div is hidden 
         // and the high scores div is shown displaying high schores
+    finalScoreContainer.classList.add('hide')
+    highScoresContainer.classList.remove('hide')
 }
 
 function chooseAsAnswer(event) {
@@ -152,13 +159,9 @@ function chooseAsAnswer(event) {
         timerEl.innerHTML = timeLeft
     }
 
-    // if (questionsIndex < questions.length) {
         questionsIndex++
         getNextQuestion() 
-    // } else {
-        // questionsIndex = 0
-    // }
-    // console.log(questions[questionsIndex])
+
 }
 
 function startQuiz() {
@@ -167,15 +170,10 @@ function startQuiz() {
     beginQuizContainer.classList.add("hide")
     // the question container section is shown to user
     questionsContainer.classList.remove("hide")
-
     // the timer is started
     startTimer()
-    
     // one question is shown to the user at a time
     getNextQuestion()
-    
-   
-
 }
 
 
