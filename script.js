@@ -9,7 +9,7 @@ const questions = [
             "alerts",
             "numbers"
         ],
-        point: 2
+        points: 2
     },
     {
         number: 2,
@@ -21,7 +21,7 @@ const questions = [
             "parenthesis",
             "square brackets"
         ],
-        point: 2
+        points: 2
     },
     {
         number: 3,
@@ -33,43 +33,70 @@ const questions = [
             "booleans",
             "all of the above"
         ],
-        point: 2
+        points: 2
     }
 ]
  
 const beginQuizContainer = document.querySelector(".begin-quiz-container")
-const startQuizBtn = document.querySelector(".startQuizBtn")
+const startQuizBtn = document.querySelector(".start-quiz-btn")
 const questionsContainer = document.querySelector(".questions-container")
 const questionContainer = document.querySelector(".single-question-container")
 const answerResult = document.querySelector(".answer-result-text")
 const questionHeading = document.querySelector(".question")
 const finalScoreContainer = document.querySelector(".final-score-container")
-let timeLeft = 15
-let questionsIndex = 0
-
+const finalScoreDisplay = document.querySelector(".final-score")
+const submitScoresBtn = document.querySelector(".submit-scores-btn")
+const timerEl = document.querySelector(".time-remaining")
+let timeLeft = 15;
+let questionsIndex = 0;
+let score = 0;
+let initials = ""
 
 function startTimer() {
     console.log('start timer')
+    var timeInterval = setInterval(function () {
+        timeLeft--;
+        timerEl.textContent = timeLeft
+    
+        if(timeLeft === 0) {
+          clearInterval(timeInterval)
+          // stop the quiz
+          // hide the quiz portion
+          //hide quiz portion
+          questionsContainer.classList.add('hide')
+          // show the final score portion 
+          // show initials input form
+          finalScoreContainer.classList.remove('hide')
+        
+          // show final score to user
+          finalScoreDisplay.innerHTML = score
+        }
+    
+      }, 1000);
+    
 }
 
 function getNextQuestion() {
     // console.log(questionsIndex)
     console.log(questions[questionsIndex])
+    
     if(questionsIndex < questions.length) {
-    questionContainer.innerHTML = `
-            <h2 class="question">${questions[questionsIndex].question}</h2>
-                <ol class="question-answer-options">
-                    <li class="question-answer-choice">${questions[questionsIndex].options[0]}</li>
-                    <li class="question-answer-choice">${questions[questionsIndex].options[1]}</li>
-                    <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
-                    <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
-                </ol>
-        `
+        questionContainer.innerHTML = `
+                <h2 class="question">${questions[questionsIndex].question}</h2>
+                    <ol class="question-answer-options">
+                        <li class="question-answer-choice">${questions[questionsIndex].options[0]}</li>
+                        <li class="question-answer-choice">${questions[questionsIndex].options[1]}</li>
+                        <li class="question-answer-choice">${questions[questionsIndex].options[2]}</li>
+                        <li class="question-answer-choice">${questions[questionsIndex].options[3]}</li>
+                    </ol>
+            `
 
+        // when user clicks on an answer choice, 
+        // the user moves on to the next question in the sequence     
         const questionChoices = document.querySelectorAll(".question-answer-choice")
         console.log(questionChoices)
         
-        questionChoices.forEach((questionChoice, index) => {
+        questionChoices.forEach((questionChoice) => {
            questionChoice.addEventListener('click', chooseAsAnswer)
        })
     } else {
@@ -78,26 +105,51 @@ function getNextQuestion() {
         questionsContainer.classList.add('hide')
         // show initials input form
         finalScoreContainer.classList.remove('hide')
+        
+        // show final score to user
+        finalScoreDisplay.innerHTML = score
+        
+        // when user inputs their initials and clicks submit button,
+        submitScoresBtn.addEventListener("click", trackScore) 
     }
     
-     // when user clicks on an answer choice, 
-     // the user moves on to the next question in the sequence     
-
-
 }
 
-function chooseAsAnswer(answerChoice) {
-    console.log(answerChoice.target)
+function trackScore(event) {
+// their initials and score is added to high scores
+    // initials and score is saved to local storage
+    event.preventDefault()
+    initials = document.querySelector(".record-final-score").value
+    console.log(initials + ": " + score)
+
+    // when user clicks submit button,
+        // the final scores div is hidden 
+        // and the high scores div is shown displaying high schores
+}
+
+function chooseAsAnswer(event) {
+    console.log(event.target)
     //the choice is evaluated to be correct or incorrect
-    const userAnswerChoice = answerChoice.target
+    const userAnswerChoice = event.target
     console.log(userAnswerChoice)
     // console.log(questions[questionsIndex].answer)
     if (userAnswerChoice.innerHTML === questions[questionsIndex].answer) {
+       // if answer is correct, display 'correct' 
+        // and add points to score
         console.log(answerResult)
         answerResult.innerHTML = 'CORRECT'
+        score += questions[questionsIndex].points
     } else {
+        // if answer is incorrect, display 'wrong' 
+            // and deduct time from timer
         console.log('answer is incorrect')
         answerResult.innerHTML = 'WRONG'
+
+        // when answewr is wrong, time is subtracted from the timer
+            // update the timer on the page
+        timeLeft -= 5
+        console.log(timeLeft)
+        timerEl.innerHTML = timeLeft
     }
 
     // if (questionsIndex < questions.length) {
@@ -120,20 +172,6 @@ function startQuiz() {
     startTimer()
     
     // one question is shown to the user at a time
-
-    // questions.forEach((question, index) => {
-    //     questionsIndex = index
-    //     questionContainer.innerHTML = `
-        // <h2 class="question">${question.question}</h2>
-        //     <ol class="question-answer-options">
-        //         <li class="question-answer-choice">${question.options[0]}</li>
-        //         <li class="question-answer-choice">${question.options[1]}</li>
-        //         <li class="question-answer-choice">${question.options[2]}</li>
-        //         <li class="question-answer-choice">${question.options[3]}</li>
-        //     </ol>
-        // `
-    // })
-
     getNextQuestion()
     
    
