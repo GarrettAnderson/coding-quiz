@@ -3,8 +3,34 @@
     padding: 0;
 }
 
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.view-high-scores {
+    color: #E866EC;
+}
+
+
+
 /* Hide containers */
 
 .hide {
     display: none;
+}
+
+@media screen and (min-width: 768px) {
+
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .view-high-scores {
+        cursor: pointer;
+    }
+
 }
