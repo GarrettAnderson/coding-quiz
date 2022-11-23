@@ -155,6 +155,7 @@ function trackScore(event) {
     goBackBtn.addEventListener("click", function() {
         highScoresContainer.classList.add("hide")
         beginQuizContainer.classList.remove("hide")
+        userAnswerChoice = ""
         answerResult.innerHTML = ""
     })
 
