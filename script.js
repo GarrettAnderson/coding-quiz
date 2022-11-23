@@ -48,6 +48,11 @@ const finalScoreDisplay = document.querySelector(".final-score")
 const submitScoresBtn = document.querySelector(".submit-scores-btn")
 const timerEl = document.querySelector(".time-remaining")
 const highScoresContainer = document.querySelector(".scores-container")
+const initialsValueDisplay = document.querySelector(".initials-value-display")
+const scoreValueDisplay = document.querySelector(".score-value-display")
+const highScoresList = document.querySelector(".high-scores-list")
+const goBackBtn = document.querySelector(".go-back-btn")
+const clearScoresBtn = document.querySelector(".clear-scores-btn")
 let timeInterval
 let timeLeft = 20;
 let questionsIndex = 0;
@@ -75,7 +80,6 @@ function startTimer() {
         }
     
       }, 1000);
-    
 }
 
 function getNextQuestion() {
@@ -132,6 +136,23 @@ function trackScore(event) {
         // and the high scores div is shown displaying high schores
     finalScoreContainer.classList.add('hide')
     highScoresContainer.classList.remove('hide')
+
+    // save initials in local storage
+    // save score in local storage
+
+    // show initials and score in HTML
+        // append an li with both initials and score 
+    
+    highScoresList.innerHTML += `
+        <li>
+            <p class="initials-value-display">${initials}</p>
+            <p class="score-value-display">${score}</p>
+        </li>
+    `
+    
+    // handle click events for the 'go back' button and the clear high scores button
+    goBackBtn.addEventListener("click", startQuiz)
+    
 }
 
 function chooseAsAnswer(event) {
