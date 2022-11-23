@@ -190,7 +190,13 @@ function chooseAsAnswer(event) {
 
 function startQuiz() {
     console.log('start quiz')
+
+    // initialize questionIndex to zero so able to restart the quiz
     questionsIndex = 0
+
+    // reset timer countdown starting point
+    timeLeft = 20
+    timerEl.innerHTML = timeLeft
 // When user clicks on the 'start quiz' button
     // the begin quiz container is hidden.
     beginQuizContainer.classList.add("hide")
