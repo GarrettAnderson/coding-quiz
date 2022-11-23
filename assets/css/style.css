@@ -21,7 +21,8 @@ header {
     text-align: center;
 }
 
-.start-quiz-btn {
+.start-quiz-btn,
+.submit-scores-btn {
     background-color:#351E75;
     color: #fff;
     padding: 1rem 1.5rem;
@@ -35,6 +36,14 @@ header {
     color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 5px;
+}
+
+.answer-result {
+    text-align: center;
+    width: 80%;
+    margin: 2rem auto;
+    border-top: 1px solid grey;
+    padding-top: 1rem;
 }
 
 /* Hide containers */
