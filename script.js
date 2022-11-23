@@ -151,8 +151,11 @@ function trackScore(event) {
     `
     
     // handle click events for the 'go back' button and the clear high scores button
-    goBackBtn.addEventListener("click", startQuiz)
-    
+    goBackBtn.addEventListener("click", function() {
+        highScoresContainer.classList.add("hide")
+        beginQuizContainer.classList.remove("hide")
+    })
+
 }
 
 function chooseAsAnswer(event) {
@@ -186,9 +189,14 @@ function chooseAsAnswer(event) {
 }
 
 function startQuiz() {
+    console.log('start quiz')
+    questionsIndex = 0
 // When user clicks on the 'start quiz' button
     // the begin quiz container is hidden.
     beginQuizContainer.classList.add("hide")
+    // hide final scores and high scores sections
+    finalScoreContainer.classList.add("hide")
+    highScoresContainer.classList.add("hide")
     // the question container section is shown to user
     questionsContainer.classList.remove("hide")
     // the timer is started
