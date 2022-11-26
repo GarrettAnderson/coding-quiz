@@ -89,6 +89,7 @@ header {
 
     header {
         display: flex;
+        flex-direction: row;
         justify-content: space-between;
     }
 
@@ -108,6 +109,11 @@ header {
     .question-answer-options {
         display: grid;
         grid-template-columns: 1fr 1fr;
+    }
+
+    .final-score-container form {
+        display: flex;
+        flex-direction:row;
     }
 
 }

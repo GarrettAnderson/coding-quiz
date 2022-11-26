@@ -199,8 +199,9 @@ function chooseAsAnswer(event) {
 }
 
 function viewHighScores() {
-    highScoresContainer.classList.remove("hide")
     beginQuizContainer.classList.add("hide")
+    finalScoreContainer.classList.add('hide')
+    highScoresContainer.classList.remove("hide")
      // handle click events for the 'go back' button and the clear high scores button
     goBackBtn.addEventListener("click", function() {
     highScoresContainer.classList.add("hide")
