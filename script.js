@@ -53,6 +53,7 @@ const scoreValueDisplay = document.querySelector(".score-value-display")
 const highScoresList = document.querySelector(".high-scores-list")
 const goBackBtn = document.querySelector(".go-back-btn")
 const clearScoresBtn = document.querySelector(".clear-scores-btn")
+const viewHighScoresBtn = document.querySelector(".view-high-scores") 
 let timeInterval
 let timeLeft = 20;
 let questionsIndex = 0;
@@ -197,6 +198,24 @@ function chooseAsAnswer(event) {
         getNextQuestion() 
 }
 
+function viewHighScores() {
+    highScoresContainer.classList.remove("hide")
+    beginQuizContainer.classList.add("hide")
+     // handle click events for the 'go back' button and the clear high scores button
+    goBackBtn.addEventListener("click", function() {
+    highScoresContainer.classList.add("hide")
+    beginQuizContainer.classList.remove("hide")
+    userAnswerChoice = ""
+    answerResult.innerHTML = ""
+})
+
+// when clear high scores button is clicked, remove the li elements that display the high scores from the dom
+clearScoresBtn.addEventListener("click", function() {
+    highScoresList.innerHTML = ""
+})
+
+}
+
 function startQuiz() {
     console.log('start quiz')
 
@@ -208,7 +227,7 @@ function startQuiz() {
     // reset timer countdown starting point
     timeLeft = 20
     timerEl.innerHTML = timeLeft
-// When user clicks on the 'start quiz' button
+    // When user clicks on the 'start quiz' button
     // the begin quiz container is hidden.
     beginQuizContainer.classList.add("hide")
     // hide final scores and high scores sections
@@ -217,11 +236,12 @@ function startQuiz() {
     // the question container section is shown to user
     questionsContainer.classList.remove("hide")
     // the timer is started
-    // startTimer()
+    startTimer()
     // one question is shown to the user at a time
     getNextQuestion()
 }
 
 
 
-startQuizBtn.addEventListener("click", startQuiz)
+viewHighScoresBtn.addEventListener("click", viewHighScores)
+startQuizBtn.addEventListener("click", startQuiz);

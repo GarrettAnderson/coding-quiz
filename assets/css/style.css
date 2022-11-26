@@ -22,7 +22,9 @@ header {
 }
 
 .start-quiz-btn,
-.submit-scores-btn {
+.submit-scores-btn,
+.go-back-btn,
+.clear-scores-btn {
     background-color:#351E75;
     color: #fff;
     padding: 1rem 1.5rem;
@@ -36,6 +38,8 @@ header {
     color: #fff;
     padding: 1rem 1.5rem;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .answer-result {
@@ -88,8 +92,22 @@ header {
         justify-content: space-between;
     }
 
+    .start-quiz-btn:hover,
+    .submit-scores-btn:hover,
+    .go-back-btn:hover,
+    .clear-scores-btn:hover,
+    .question-answer-choice:hover {
+        background-color: #E866EC;
+        cursor: pointer;
+    }
+
     .view-high-scores {
         cursor: pointer;
+    }
+
+    .question-answer-options {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
 }
