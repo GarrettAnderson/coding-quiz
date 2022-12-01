@@ -48,7 +48,7 @@ const finalScoreDisplay = document.querySelector(".final-score")
 const submitScoresBtn = document.querySelector(".submit-scores-btn")
 const timerEl = document.querySelector(".time-remaining")
 const highScoresContainer = document.querySelector(".scores-container")
-const initialsValueDisplay = document.querySelector(".initials-value-display")
+const initialsValueDisplay = document.querySelector(".initials-value-input")
 const scoreValueDisplay = document.querySelector(".score-value-display")
 const highScoresList = document.querySelector(".high-scores-list")
 const goBackBtn = document.querySelector(".go-back-btn")
@@ -132,9 +132,10 @@ function getNextQuestion() {
 function trackScore(event) {
 // their initials and score is added to high scores
     // initials and score is saved to local storage
+    console.log('track score')
     event.preventDefault()
-    finalScoreContainer.classList.add('hide')
     highScoresContainer.classList.remove('hide')
+    finalScoreContainer.classList.add('hide')
     
     initials = initialsValueDisplay.value
     console.log(initials + ": " + score)
