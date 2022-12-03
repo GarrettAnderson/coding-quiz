@@ -8,6 +8,7 @@ header {
     flex-direction: column;
     align-items: center;
     font-size: 1.5rem;
+    margin: 1rem 0rem;
 }
 
 .view-high-scores {
@@ -16,7 +17,7 @@ header {
 
 .begin-quiz-container, 
 .single-question-container {
-    width: 80%;
+    width: 60%;
     margin: 3rem auto auto;
     text-align: center;
 }
@@ -31,6 +32,18 @@ header {
     border-radius: 5px;
     margin: 0.5rem;
 }
+
+/* btn hover effects */
+
+.start-quiz-btn:hover,
+.submit-scores-btn:hover,
+.go-back-btn:hover,
+.clear-scores-btn:hover,
+.question-answer-choice:hover {
+    background-color: #E866EC;
+    cursor: pointer;
+}
+
 
 /* quiz play section */
 
@@ -59,6 +72,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    line-height: 2rem;
 }
 
 .final-score-label {
@@ -88,11 +102,20 @@ header {
     align-items: center;
 }
 
+.scores-container h2 {
+    margin-bottom: 1rem;
+}
+
+.high-scores-list li {
+    padding: 1rem;
+}
+
 /* Hide containers */
 
 .hide {
     display: none;
 }
+
 
 @media screen and (min-width: 768px) {
 
@@ -100,16 +123,17 @@ header {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
+        margin: 1rem;
     }
 
-    .start-quiz-btn:hover,
+    /* .start-quiz-btn:hover,
     .submit-scores-btn:hover,
     .go-back-btn:hover,
     .clear-scores-btn:hover,
     .question-answer-choice:hover {
         background-color: #E866EC;
         cursor: pointer;
-    }
+    } */
 
     .view-high-scores {
         cursor: pointer;
