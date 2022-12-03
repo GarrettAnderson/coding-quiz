@@ -13,6 +13,7 @@ header {
 
 .view-high-scores {
     color: #E866EC;
+    cursor: pointer;
 }
 
 .begin-quiz-container, 
@@ -27,10 +28,16 @@ header {
 .go-back-btn,
 .clear-scores-btn {
     background-color:#351E75;
+    border-color: #351E75;
     color: #fff;
     padding: 0.5rem 1.5rem;
     border-radius: 5px;
     margin: 0.5rem;
+}
+
+.begin-quiz-container p {
+    line-height: 1.25rem;
+    margin: 0.5rem 0rem;
 }
 
 /* btn hover effects */
@@ -41,6 +48,7 @@ header {
 .clear-scores-btn:hover,
 .question-answer-choice:hover {
     background-color: #E866EC;
+    border-color: #E866EC;
     cursor: pointer;
 }
 
@@ -72,7 +80,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 2rem;
+    line-height: 1.75rem;
 }
 
 .final-score-label {
@@ -106,8 +114,17 @@ header {
     margin-bottom: 1rem;
 }
 
+.high-scores-list li:first-child {
+    border-bottom: 0px;
+}
+
 .high-scores-list li {
     padding: 1rem;
+    border: 1px solid #351E75;
+}
+
+.quiz-navigation-buttons {
+    margin: 1rem 0rem;
 }
 
 /* Hide containers */
