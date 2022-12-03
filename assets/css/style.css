@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 header {
     display: flex;
     flex-direction: column;
@@ -85,6 +89,7 @@ header {
 
 .final-score-label {
     font-size: 1.5rem;
+    margin-right: 0.25rem;
 }
 
 .initials-value-input {
