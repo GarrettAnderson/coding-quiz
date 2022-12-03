@@ -114,13 +114,9 @@ header {
     margin-bottom: 1rem;
 }
 
-.high-scores-list li:first-child {
-    border-bottom: 0px;
-}
-
 .high-scores-list li {
     padding: 1rem;
-    border: 1px solid #351E75;
+    margin: 0.25rem;
 }
 
 .quiz-navigation-buttons {
