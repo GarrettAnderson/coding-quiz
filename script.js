@@ -48,11 +48,12 @@ const finalScoreDisplay = document.querySelector(".final-score")
 const submitScoresBtn = document.querySelector(".submit-scores-btn")
 const timerEl = document.querySelector(".time-remaining")
 const highScoresContainer = document.querySelector(".scores-container")
-const initialsValueDisplay = document.querySelector(".initials-value-display")
+const initialsValueDisplay = document.querySelector(".initials-value-input")
 const scoreValueDisplay = document.querySelector(".score-value-display")
 const highScoresList = document.querySelector(".high-scores-list")
 const goBackBtn = document.querySelector(".go-back-btn")
 const clearScoresBtn = document.querySelector(".clear-scores-btn")
+const viewHighScoresBtn = document.querySelector(".view-high-scores") 
 let timeInterval
 let timeLeft = 20;
 let questionsIndex = 0;
@@ -131,15 +132,17 @@ function getNextQuestion() {
 function trackScore(event) {
 // their initials and score is added to high scores
     // initials and score is saved to local storage
+    console.log('track score')
     event.preventDefault()
+    highScoresContainer.classList.remove('hide')
+    finalScoreContainer.classList.add('hide')
+    
     initials = initialsValueDisplay.value
     console.log(initials + ": " + score)
 
     // when user clicks submit button,
         // the final scores div is hidden 
         // and the high scores div is shown displaying high schores
-    finalScoreContainer.classList.add('hide')
-    highScoresContainer.classList.remove('hide')
 
     // save initials in local storage
     // save score in local storage
@@ -196,6 +199,25 @@ function chooseAsAnswer(event) {
         getNextQuestion() 
 }
 
+function viewHighScores() {
+    beginQuizContainer.classList.add("hide")
+    finalScoreContainer.classList.add('hide')
+    highScoresContainer.classList.remove("hide")
+     // handle click events for the 'go back' button and the clear high scores button
+    goBackBtn.addEventListener("click", function() {
+    highScoresContainer.classList.add("hide")
+    beginQuizContainer.classList.remove("hide")
+    userAnswerChoice = ""
+    answerResult.innerHTML = ""
+})
+
+// when clear high scores button is clicked, remove the li elements that display the high scores from the dom
+clearScoresBtn.addEventListener("click", function() {
+    highScoresList.innerHTML = ""
+})
+
+}
+
 function startQuiz() {
     console.log('start quiz')
 
@@ -207,7 +229,7 @@ function startQuiz() {
     // reset timer countdown starting point
     timeLeft = 20
     timerEl.innerHTML = timeLeft
-// When user clicks on the 'start quiz' button
+    // When user clicks on the 'start quiz' button
     // the begin quiz container is hidden.
     beginQuizContainer.classList.add("hide")
     // hide final scores and high scores sections
@@ -223,4 +245,5 @@ function startQuiz() {
 
 
 
-startQuizBtn.addEventListener("click", startQuiz)
+viewHighScoresBtn.addEventListener("click", viewHighScores)
+startQuizBtn.addEventListener("click", startQuiz);
